@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}
+My app
+{% endblock %}
+{% block content %}
+{% for news in news_list %} 
+<h1>
+<a href="id/{{ news.id }}">{{ news.article }}</a>
+</h1> 
+{% endfor %}
+<h1>CREATE NEWS!!!!!!!!!!!!!</h1>
+<a href="news/create">Create</a>
+{% endblock %}
