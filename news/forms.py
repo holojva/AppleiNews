@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import News
+from .models import Commentaries, News
 
 # class NewsForm(forms.Form) :
 #     article = forms.CharField()
@@ -19,3 +19,10 @@ class NewsModelForm(forms.ModelForm) :
         if len(data) < 5:
             raise forms.ValidationError("Article is not long enough")
         return data
+
+class CommentaryModelForm(forms.ModelForm):
+    class Meta:
+        model = Commentaries
+        fields = [
+            "text"
+        ]

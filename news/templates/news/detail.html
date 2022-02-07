@@ -5,6 +5,28 @@
 {% endblock %}
 
 {% block content %}
+    <h5>Author: {{single_object.author}}</h5>
     <h1>{{single_object.article}}</h1>
+    <a href="/news/commentary/{{ single_object.pk }}/">Комментировать</a>
     {% include "news/detail_snippet.html" with single_object=single_object %}
+    <h5>Likes: {{single_object.get_likes}}</h5>
+    <form action="/news/like/{{single_object.pk}}/" method="post">
+        {% csrf_token %}
+        <input type="submit" value="LIKELIKELIKELIKELIKELIKELIKELIKE">
+    </form>
+ {% if perms.user.is_staff %}
+    <a href="/news/edit/{{ single_object.pk }}">Изменить</a>
+    <a href="/news/delete/{{ single_object.pk }}">Удалить</a>
+
+{% endif %}
+<h5>Commentaries</h5>
+{% for c in single_object.commentary.all %}
+<p>
+    {{c.date.time }}
+    {{ c.user }}
+    {{ c.text }}
+    <a href="/news/edit_commentary/{{ single_object.pk }}/{{c.pk}}/">Изменить</a>
+    <a href="/news/delete_commentary/{{ single_object.pk }}/{{c.pk}}/">Удалить</a>
+</p>
+{% endfor %}
 {% endblock %}

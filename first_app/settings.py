@@ -25,8 +25,9 @@ SECRET_KEY = 'ds$qdbpik)(su0h#6@wlm%f6%8-b#w$n-co^(b4&d#9_umcrra'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["127.0.0.1"]
+LOGIN_URL = "/login"
+LOGIN_REGISTERED_URL = "/"
 
 # Application definition
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'news',
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +121,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+APPEND_SLASH=False
